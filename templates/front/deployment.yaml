@@ -41,5 +41,7 @@ spec:
             httpGet:
               path: /
               port: {{ .Values.front.port }}
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5

@@ -3,6 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: mongodb-pvc
   namespace: {{ .Values.namespace }}
+  annotations:
+    helm.sh/resource-policy: keep
+    argocd.argoproj.io/sync-options: Replace=false
   labels:
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}

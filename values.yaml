@@ -16,7 +16,7 @@ mongodb:
     database: eventmap
   storage:
     size: 2Gi
-    storageClassName: ""   # laisser vide pour utiliser la classe par défaut
+    storageClassName: "local-path"   # storageClass assignée par le cluster
   resources:
     requests:
       cpu: 100m

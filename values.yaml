@@ -1,5 +1,6 @@
 # Valeurs globales
 namespace: event-map
+serverIp: "68.183.132.93"   # Surcharger via --set serverIp=1.2.3.4
 
 # ──────────────────────────────────────────
 # MongoDB
@@ -51,10 +52,7 @@ api:
     port: 9000
   ingress:
     enabled: true
-    className: nginx
-    host: api.event-map.local
     path: /
-    tls: []
 
 # ──────────────────────────────────────────
 # Frontend (React / Vite)
@@ -67,7 +65,7 @@ front:
   replicaCount: 1
   port: 5173
   env:
-    VITE_API_URL: http://api.event-map.local
+    VITE_API_URL: ""   # Construit automatiquement depuis serverIp
   resources:
     requests:
       cpu: 50m
@@ -80,7 +78,4 @@ front:
     port: 5173
   ingress:
     enabled: true
-    className: nginx
-    host: event-map.local
     path: /
-    tls: []

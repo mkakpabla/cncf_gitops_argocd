@@ -28,7 +28,7 @@ spec:
             - containerPort: {{ .Values.front.port }}
           env:
             - name: VITE_API_URL
-              value: {{ .Values.front.env.VITE_API_URL | quote }}
+              value: {{ printf "https://api.%s.nip.io" .Values.serverIp | quote }}
           resources:
             {{- toYaml .Values.front.resources | nindent 12 }}
           livenessProbe:

@@ -4,15 +4,12 @@ kind: Ingress
 metadata:
   name: front
   namespace: {{ .Values.namespace }}
-  labels:
-    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/component: front
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
-  ingressClassName: {{ .Values.front.ingress.className }}
   rules:
-    - host: {{ .Values.front.ingress.host }}
+    - host: {{ printf "event-map.%s.nip.io" .Values.serverIp }}
       http:
         paths:
           - path: {{ .Values.front.ingress.path }}
@@ -22,8 +19,4 @@ spec:
                 name: front
                 port:
                   number: {{ .Values.front.service.port }}
-  {{- if .Values.front.ingress.tls }}
-  tls:
-    {{- toYaml .Values.front.ingress.tls | nindent 4 }}
-  {{- end }}
 {{- end }}

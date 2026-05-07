@@ -60,7 +60,7 @@ api:
 front:
   image:
     repository: ghcr.io/mkakpabla/event-map-front
-    tag: 30dc1df
+    tag: 1b7d13a
     pullPolicy: IfNotPresent
   replicaCount: 1
   port: 5173

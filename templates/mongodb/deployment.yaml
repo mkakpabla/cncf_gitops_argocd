@@ -52,6 +52,8 @@ spec:
                 - "db.adminCommand('ping')"
             initialDelaySeconds: 30
             periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
           readinessProbe:
             exec:
               command:
@@ -60,6 +62,8 @@ spec:
                 - "db.adminCommand('ping')"
             initialDelaySeconds: 10
             periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
       volumes:
         - name: mongodb-data
           persistentVolumeClaim:

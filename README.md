@@ -7,7 +7,7 @@ Helm chart for the **Event Map** application — stack FastAPI + React/Vite + Mo
 | Composant | Image | Port |
 |-----------|-------|------|
 | API (FastAPI/uvicorn) | `ghcr.io/mia/event-map-api` | 9000 |
-| Frontend (React/Vite) | `ghcr.io/mia/event-map-front` | 5173 |
+| Frontend (React/Vite) | `ghcr.io/mia/event-map-front` | 4173 |
 | MongoDB | `mongo:7` | 27017 |
 
 Tous les objets sont déployés dans le namespace `event-map` (configurable via `namespace`).

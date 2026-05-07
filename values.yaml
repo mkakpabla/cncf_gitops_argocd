@@ -63,7 +63,7 @@ front:
     tag: 1b7d13a
     pullPolicy: IfNotPresent
   replicaCount: 1
-  port: 5173
+  port: 4173
   env:
     VITE_API_URL: ""   # Construit automatiquement depuis serverIp
   resources:
@@ -75,7 +75,7 @@ front:
       memory: 128Mi
   service:
     type: ClusterIP
-    port: 5173
+    port: 4173
   ingress:
     enabled: true
     path: /

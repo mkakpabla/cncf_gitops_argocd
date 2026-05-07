@@ -20,6 +20,13 @@ spec:
         app.kubernetes.io/name: mongodb
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      initContainers:
+        - name: remove-lock
+          image: "{{ .Values.mongodb.image.repository }}:{{ .Values.mongodb.image.tag }}"
+          command: ["rm", "-f", "/data/db/mongod.lock"]
+          volumeMounts:
+            - name: mongodb-data
+              mountPath: /data/db
       containers:
         - name: mongodb
           image: "{{ .Values.mongodb.image.repository }}:{{ .Values.mongodb.image.tag }}"

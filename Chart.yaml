@@ -1,0 +1,14 @@
+apiVersion: v2
+name: event-map
+description: Helm chart for the Event Map application (FastAPI + React + MongoDB)
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - event-map
+  - fastapi
+  - react
+  - mongodb
+icon: https://raw.githubusercontent.com/cncf/artwork/main/projects/helm/icon/color/helm-icon-color.svg
+maintainers:
+  - name: mia

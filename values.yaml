@@ -1,0 +1,86 @@
+# Valeurs globales
+namespace: event-map
+
+# ──────────────────────────────────────────
+# MongoDB
+# ──────────────────────────────────────────
+mongodb:
+  image:
+    repository: mongo
+    tag: "7"
+    pullPolicy: IfNotPresent
+  auth:
+    username: user
+    # Surcharger via --set mongodb.auth.password=<secret> ou un Secret externe
+    password: changeme
+    database: eventmap
+  storage:
+    size: 2Gi
+    storageClassName: ""   # laisser vide pour utiliser la classe par défaut
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  service:
+    port: 27017
+
+# ──────────────────────────────────────────
+# API (FastAPI / uvicorn)
+# ──────────────────────────────────────────
+api:
+  image:
+    repository: ghcr.io/mia/event-map-api
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicaCount: 1
+  port: 9000
+  env:
+    MONGO_DB: eventmap
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+  service:
+    type: ClusterIP
+    port: 9000
+  ingress:
+    enabled: true
+    className: nginx
+    host: api.event-map.local
+    path: /
+    tls: []
+
+# ──────────────────────────────────────────
+# Frontend (React / Vite)
+# ──────────────────────────────────────────
+front:
+  image:
+    repository: ghcr.io/mia/event-map-front
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicaCount: 1
+  port: 5173
+  env:
+    VITE_API_URL: http://api.event-map.local
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 128Mi
+  service:
+    type: ClusterIP
+    port: 5173
+  ingress:
+    enabled: true
+    className: nginx
+    host: event-map.local
+    path: /
+    tls: []

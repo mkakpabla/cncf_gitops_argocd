@@ -31,17 +31,3 @@ spec:
               value: {{ printf "https://api.%s.nip.io" .Values.serverIp | quote }}
           resources:
             {{- toYaml .Values.front.resources | nindent 12 }}
-          livenessProbe:
-            httpGet:
-              path: /
-              port: {{ .Values.front.port }}
-            initialDelaySeconds: 10
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /
-              port: {{ .Values.front.port }}
-            initialDelaySeconds: 30
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 5

@@ -6,16 +6,9 @@ metadata:
   annotations:
     helm.sh/resource-policy: keep
     argocd.argoproj.io/sync-options: Replace=false
-  labels:
-    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
-  accessModes:
-    - ReadWriteOnce
+  accessModes: [ReadWriteOnce]
+  storageClassName: {{ .Values.mongodb.storage.storageClassName }}
   resources:
     requests:
       storage: {{ .Values.mongodb.storage.size }}
-  {{- if .Values.mongodb.storage.storageClassName }}
-  storageClassName: {{ .Values.mongodb.storage.storageClassName }}
-  {{- end }}

@@ -61,7 +61,7 @@ api:
 # ──────────────────────────────────────────
 front:
   image:
-    repository: ghcr.io/mia/event-map-front
+    repository: ghcr.io/mkakpabla/event-map-front
     tag: latest
     pullPolicy: IfNotPresent
   replicaCount: 1

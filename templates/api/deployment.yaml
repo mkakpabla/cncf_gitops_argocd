@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag }}"
+          image: ghcr.io/mkakpabla/event-map-api:latest
           imagePullPolicy: {{ .Values.api.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.api.port }}

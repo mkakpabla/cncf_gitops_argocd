@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: front
-          image: ghcr.io/mkakpabla/event-map-front:adfb4ac
+          image: ghcr.io/mkakpabla/event-map-front:11860e0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.front.port }}

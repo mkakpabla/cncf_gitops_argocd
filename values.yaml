@@ -9,8 +9,7 @@ certManager:
   enabled: true
   email: mk.akpabla@gmail.com
   clusterIssuer: letsencrypt-prod
-  acmeServer: https://acme-staging-v02.api.letsencrypt.org/directory
-  # Production : https://acme-v02.api.letsencrypt.org/directory
+  acmeServer: https://acme-v02.api.letsencrypt.org/directory
   installCRDs: true
 
 # ──────────────────────────────────────────

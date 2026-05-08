@@ -11,10 +11,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - {{ printf "api.%s.nip.io" .Values.serverIp }}
+        - {{ .Values.api.ingress.host }}
       secretName: api-tls
   rules:
-    - host: {{ printf "api.%s.nip.io" .Values.serverIp }}
+    - host: {{ .Values.api.ingress.host }}
       http:
         paths:
           - path: {{ .Values.api.ingress.path }}

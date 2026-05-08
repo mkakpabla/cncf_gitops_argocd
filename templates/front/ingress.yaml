@@ -11,10 +11,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - {{ printf "event-map.%s.nip.io" .Values.serverIp }}
+        - {{ .Values.front.ingress.host }}
       secretName: front-tls
   rules:
-    - host: {{ printf "event-map.%s.nip.io" .Values.serverIp }}
+    - host: {{ .Values.front.ingress.host }}
       http:
         paths:
           - path: {{ .Values.front.ingress.path }}

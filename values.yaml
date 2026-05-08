@@ -63,6 +63,7 @@ api:
   ingress:
     enabled: true
     path: /
+    host: "api.68.183.132.93.nip.io"
 
 # ──────────────────────────────────────────
 # Frontend (React / Vite)
@@ -89,3 +90,4 @@ front:
   ingress:
     enabled: true
     path: /
+    host: "68.183.132.93.nip.io"

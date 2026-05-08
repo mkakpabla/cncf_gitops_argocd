@@ -12,8 +12,3 @@ keywords:
 icon: https://raw.githubusercontent.com/cncf/artwork/main/projects/helm/icon/color/helm-icon-color.svg
 maintainers:
   - name: mia
-dependencies:
-  - name: cert-manager
-    version: "v1.17.2"
-    repository: https://charts.jetstack.io
-    condition: certManager.enabled

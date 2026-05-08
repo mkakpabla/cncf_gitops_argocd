@@ -7,7 +7,12 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: {{ .Values.certManager.clusterIssuer | quote }}
 spec:
+  tls:
+    - hosts:
+        - {{ printf "api.%s.nip.io" .Values.serverIp }}
+      secretName: api-tls
   rules:
     - host: {{ printf "api.%s.nip.io" .Values.serverIp }}
       http:

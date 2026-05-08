@@ -23,14 +23,12 @@ spec:
       containers:
         - name: api
           image: ghcr.io/mkakpabla/event-map-api:2b86c17
-          imagePullPolicy: {{ .Values.api.image.pullPolicy }}
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.api.port }}
           env:
             - name: MONGO_DB
               value: {{ .Values.api.env.MONGO_DB | quote }}
-            # MONGO_USER et MONGO_PASSWORD sont résolus en premier,
-            # puis MONGO_URI peut les référencer via la substitution $(VAR)
             - name: MONGO_USER
               valueFrom:
                 secretKeyRef:

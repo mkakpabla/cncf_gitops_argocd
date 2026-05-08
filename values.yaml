@@ -1,6 +1,6 @@
 # Valeurs globales
 namespace: event-map
-serverIp: "68.183.132.93"   # Surcharger via --set serverIp=1.2.3.4
+serverIp: "68.183.132.93"
 
 # ──────────────────────────────────────────
 # cert-manager / Let's Encrypt
@@ -22,12 +22,11 @@ mongodb:
     pullPolicy: IfNotPresent
   auth:
     username: user
-    # Surcharger via --set mongodb.auth.password=<secret> ou un Secret externe
     password: changeme
     database: eventmap
   storage:
     size: 2Gi
-    storageClassName: "local-path"   # storageClass assignée par le cluster
+    storageClassName: "local-path"
   resources:
     requests:
       cpu: 100m
@@ -39,13 +38,9 @@ mongodb:
     port: 27017
 
 # ──────────────────────────────────────────
-# API (FastAPI / uvicorn)
+# API
 # ──────────────────────────────────────────
 api:
-  image:
-    repository: ghcr.io/mia/event-map-api
-    tag: latest
-    pullPolicy: IfNotPresent
   replicaCount: 1
   port: 9000
   env:
@@ -66,17 +61,13 @@ api:
     host: "api.68.183.132.93.nip.io"
 
 # ──────────────────────────────────────────
-# Frontend (React / Vite)
+# Frontend
 # ──────────────────────────────────────────
 front:
-  image:
-    repository: ghcr.io/mkakpabla/event-map-front
-    tag: e016432
-    pullPolicy: IfNotPresent
   replicaCount: 1
   port: 4173
   env:
-    VITE_API_URL: ""   # Construit automatiquement depuis serverIp
+    VITE_API_URL: ""
   resources:
     requests:
       cpu: 50m

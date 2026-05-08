@@ -22,8 +22,8 @@ spec:
     spec:
       containers:
         - name: front
-          image: "{{ .Values.front.image.repository }}:{{ .Values.front.image.tag }}"
-          imagePullPolicy: {{ .Values.front.image.pullPolicy }}
+          image: ghcr.io/mkakpabla/event-map-front:adfb4ac
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.front.port }}
           env:

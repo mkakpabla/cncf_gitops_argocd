@@ -7,11 +7,11 @@ serverIp: "68.183.132.93"   # Surcharger via --set serverIp=1.2.3.4
 # ──────────────────────────────────────────
 certManager:
   enabled: true
-  email: mk.akpabla@gmail.com          # Remplacer par une adresse valide
+  email: mk.akpabla@gmail.com
   clusterIssuer: letsencrypt-prod
   acmeServer: https://acme-staging-v02.api.letsencrypt.org/directory
-  # Pour tester sans limite de rate : utiliser letsencrypt-staging
-  # acmeServer: https://acme-staging-v02.api.letsencrypt.org/directory
+  # Production : https://acme-v02.api.letsencrypt.org/directory
+  installCRDs: true
 
 # ──────────────────────────────────────────
 # MongoDB

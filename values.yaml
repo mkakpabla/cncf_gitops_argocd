@@ -67,7 +67,7 @@ front:
   replicaCount: 1
   port: 4173
   env:
-    VITE_API_URL: {{ .Values.api.ingress.host | quote }}
+    VITE_API_URL: "change-me"
   resources:
     requests:
       cpu: 50m

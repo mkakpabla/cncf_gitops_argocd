@@ -22,12 +22,12 @@ spec:
     spec:
       containers:
         - name: front
-          image: "ghcr.io/mkakpabla/event-map-front:2930e01"
+          image: "ghcr.io/mkakpabla/event-map-front:latest"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.front.port }}
           env:
             - name: VITE_API_URL
-              value: {{ printf "https://api.%s.nip.io" .Values.serverIp | quote }}
+              value: {{ .Values.api.ingress.host | quote }}
           resources:
             {{- toYaml .Values.front.resources | nindent 12 }}

@@ -41,7 +41,7 @@ kubectl -n cert-manager rollout status deployment/cert-manager-webhook
 | Paramètre | Description | Défaut |
 |-----------|-------------|--------|
 | `namespace` | Namespace Kubernetes cible | `event-map` |
-| `serverIp` | IP publique du serveur (utilisée pour nip.io) | `-` |
+| `serverHost` | Host du serveur (utilisée pour nip.io) | `-` |
 | `certManager.enabled` | Activer la gestion TLS via cert-manager | `true` |
 | `certManager.email` | Email pour le compte ACME Let's Encrypt | `mk.akpabla@gmail.com` |
 | `certManager.clusterIssuer` | Nom du ClusterIssuer créé | `letsencrypt-prod` |

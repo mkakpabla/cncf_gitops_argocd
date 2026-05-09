@@ -1,6 +1,6 @@
 # Valeurs globales
 namespace: event-map
-serverIp: "68.183.132.93"
+serverHost: "change-me"
 
 # ──────────────────────────────────────────
 # cert-manager / Let's Encrypt
@@ -58,7 +58,7 @@ api:
   ingress:
     enabled: true
     path: /
-    host: "api.68.183.132.93.nip.io"
+    host: "change-me"
 
 # ──────────────────────────────────────────
 # Frontend
@@ -67,7 +67,7 @@ front:
   replicaCount: 1
   port: 4173
   env:
-    VITE_API_URL: ""
+    VITE_API_URL: {{ .Values.api.ingress.host | quote }}
   resources:
     requests:
       cpu: 50m
@@ -81,4 +81,4 @@ front:
   ingress:
     enabled: true
     path: /
-    host: "68.183.132.93.nip.io"
+    host: "change-me"

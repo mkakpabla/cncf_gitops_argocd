@@ -22,7 +22,7 @@ spec:
     spec:
       initContainers:
         - name: seed
-          image: "ghcr.io/mkakpabla/event-map-api:latest"
+          image: ghcr.io/mkakpabla/event-map-api:latest
           imagePullPolicy: IfNotPresent
           command: ["python", "seed.py", "--clear"]
           env:
@@ -42,7 +42,7 @@ spec:
               value: "mongodb://$(MONGO_USER):$(MONGO_PASSWORD)@mongodb:{{ .Values.mongodb.service.port }}"
       containers:
         - name: api
-          image: "ghcr.io/mkakpabla/event-map-api:latest"
+          image: ghcr.io/mkakpabla/event-map-api:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.api.port }}
